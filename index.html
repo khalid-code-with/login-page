@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* background-color:#3498db; */
+
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #form_container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #2980b9;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #21618c;
+        }
+
+        .error {
+            color: red;
+            margin: 0;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="form_container">
+        <h2>Login</h2>
+        <form onsubmit="return validateForm()">
+            <input type="text" placeholder="Username" id="username"><br>
+            <p id="usererror" class="error"></p>
+            <input type="password" placeholder="Password" id="password"><br>
+            <p id="passerror" class="error"></p>
+            <input type="submit" value="Login"id="btns">
+        </form>
+    </div>
+    <script>
+        var username = document.getElementById("username");
+        var pass = document.getElementById("password");
+
+        function validateForm() {
+            var isValid = true;
+            document.getElementById("usererror").innerHTML = "";
+            document.getElementById("passerror").innerHTML = "";
+
+            if (username.value === "") {
+                document.getElementById("usererror").innerHTML = "Username is empty";
+                isValid = false;
+            } else if (username.value.length < 3) {
+                document.getElementById("usererror").innerHTML = "Username requires a minimum of 3 characters";
+                isValid = false;
+            }
+
+            if (pass.value === "") {
+                document.getElementById("passerror").innerHTML = "Password is empty";
+                isValid = false;
+            }
+            else if(pass.value.length<8)
+            {
+                document.getElementById("passerror").innerHTML = "Atleast four character and  digit simbols";
+            }
+
+            if (isValid) {
+                // Clear form fields after successful validation
+                username.value = "";
+                pass.value = "";
+            }
+
+            return isValid; // This will prevent the form from submitting if there are validation errors
+        }
+   var btn=document.getElementById("btns");
+   btn.addEventListener("click",function()
+{
+    // location.href="https://login.com";
+});
+    </script>
+</body>
+
+</html>
